@@ -1,0 +1,33 @@
+<whatsim-error *ngIf="hasError" type="dialog" error="{{errorShort}}" description="{{errorLong}}"></whatsim-error>
+<div class="content-flex">
+    <mat-card class="profile-card">
+      <h2>Tu cuenta</h2>
+      <div class="content-flex flex-left" style="width: 100%;">
+        <div class="content-flex flex-left" style="flex-direction: row;">
+          <h4><b>Nombre de usuario: </b></h4> <span>{{name}}</span>
+        </div>
+        <div class="content-flex flex-left" style="flex-direction: row;">
+          <h4><b>Correo electrónico: </b></h4> <span>{{email}}</span>
+        </div>
+        <div class="content-flex flex-left" style="flex-direction: row;">
+          <h4><b>Fecha de registro: </b></h4> <span>{{joindate}}</span>
+        </div>
+      </div>
+    </mat-card>
+    <button mat-raised-button aria-label="Eliminar cuenta" color="warn" (click)="showConfirmation()">
+      <mat-icon>delete</mat-icon>
+      Eliminar cuenta
+    </button>
+    <div style="margin: auto;" *ngIf="showDeleteConfirmation">
+      <mat-card class="profile-card">
+        <h2>¿Estás seguro?</h2>
+        <h3>Tu cuenta se eliminará para siempre</h3>
+        <button mat-raised-button aria-label="Confirmar eliminar cuenta" color="warn" (click)="deleteAccount()">
+          <mat-icon>delete_forever</mat-icon>
+          Eliminar cuenta
+        </button>
+        <button mat-stroked-button aria-label="Cancelar" (click)="hideConfirmation()">Cancelar</button>
+      </mat-card>
+    </div>
+    <mat-spinner *ngIf="loading"></mat-spinner>
+</div>

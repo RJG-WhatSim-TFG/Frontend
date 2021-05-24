@@ -1,0 +1,25 @@
+.content-flex{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 90vw;
+    margin: auto;
+}
+
+.header-flex{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    max-width: 80vw;
+    margin: auto;
+    padding: 5px;
+    align-items: center;
+    align-content: center;
+}
+
+.row-flex{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    padding: 5px;
+}

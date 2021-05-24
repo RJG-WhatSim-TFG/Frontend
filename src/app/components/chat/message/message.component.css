@@ -1,0 +1,118 @@
+.message {
+    width: 100%;
+    height: auto;
+    display: block;
+    overflow: hidden;
+  }
+  .message .bubble {
+    float: left;
+    max-width: 75%;
+    width: auto;
+    height: auto;
+    display: block;
+    background: #FFFF;
+    border-radius: 5px;
+    position: relative;
+    margin: 10px 0 3px 25px;
+    /*box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);*/
+  }
+  .message .timebubble {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    background: #e1f5feeb;
+    border-radius: 5px;
+    position: relative;
+    margin: 15px 0 15px 0px;
+    /*box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);*/
+  }
+  .message .bubble.alt {
+    margin: 10px 25px 3px 0px;
+    background: #dcf8c6;
+    float: right;
+  }
+
+  .message .timebubble.timemsg {
+    background: #e1f5feeb;
+    float:none;
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  .message .bubble.follow {
+    margin: 2px 0 3px 25px;
+  }
+  .message .bubble.altfollow {
+    margin: 2px 25px 3px 0px;
+  }
+  .message .bubble .arrow {
+    position: absolute;
+    float: left;
+    left: -11px;
+    top: 0px;
+  }
+  .message .bubble .arrow.alt {
+    bottom: 20px;
+    left: auto;
+    right: 4px;
+    float: right;
+  }
+  .message .bubble .arrow:after {
+    content: "";
+    position: absolute;
+    border-top: 15px solid #FFFF;
+    border-left: 15px solid transparent;
+    border-radius: 4px 0 0 0px;
+    width: 0;
+    height: 0;
+  }
+  .message .bubble .arrow.alt:after {
+    border-top: 15px solid #dcf8c6;
+    transform: scaleX(-1);
+  }
+
+  .message .bubble .message-content {
+    padding: 6px 0 6px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .message .bubble .message-content .content {
+    /*font-size: 14px;
+    font-weight: 500;*/
+    padding: 0 10px 0 10px;
+    margin: auto;
+    font-size:medium;
+    overflow: hidden;
+    text-overflow:'-';
+    /*display: table;*/
+  }
+
+  .message .timebubble .message-content .content {
+    padding: 10px 10px 10px 10px;
+    margin: auto;
+    font-size:small;
+    overflow: hidden;
+  }
+
+  .message .bubble .message-content .time {
+    align-self: flex-end;
+    justify-self: flex-end;
+    color: rgba(0, 0, 0, 0.38);
+    margin: 0 5px 0 5px;
+    font-size:smaller;
+  }
+
+  .message .bubble .message-content .status {
+    align-self: flex-end;
+    justify-self: flex-end;
+    color: rgba(0, 0, 0, 0.38);
+    font-size:smaller;
+    margin: 0 5px 0 0;
+  }
+
+  .message .bubble .message-content .status.readed {
+    color: #34b7f1;
+  }

@@ -1,0 +1,40 @@
+<div class="content-flex">
+    <mat-card class="signin-card">
+      <h2>Inicia sesión con tu cuenta</h2>
+      <div class="content-flex signform">
+        <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label>Correo electrónico</mat-label>
+          <input type="email" matInput placeholder="Ej: mail@mail.com" [formControl]="emailValidator" required [(ngModel)]="loginData.email">
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error *ngIf="emailValidator.hasError('email') && !emailValidator.hasError('required')">
+          Por favor introduce un correo electrónico válido
+          </mat-error>
+          <mat-error *ngIf="emailValidator.hasError('required')">
+          El email es <strong>necesario</strong>
+          </mat-error>
+          <mat-error *ngIf="emailValidator.hasError('notFound') && isFailed">
+          No se encontró ninguna cuenta con este email
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label>Contraseña</mat-label>
+          <input type="password" matInput maxlength="22" [formControl]="passwordValidator" required [(ngModel)]="loginData.pass">
+          <mat-icon matSuffix>lock</mat-icon>
+          <mat-error *ngIf="(passwordValidator.hasError('minlength') || passwordValidator.hasError('maxlength')) && !passwordValidator.hasError('required')">
+          La contraseña debe tener entre 6 y 22 caracteres
+          </mat-error>
+          <mat-error *ngIf="passwordValidator.hasError('required')">
+          La contraseña es <strong>necesaria</strong>
+          </mat-error>
+          <mat-error *ngIf="passwordValidator.hasError('wrongCredentials') && isFailed">
+          Los datos introducidos no concuerdan: Comprueba la contraseña y el email
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="signIn()" [disabled]="!emailValidator.valid || !passwordValidator.valid">Iniciar sesión</button>
+    </mat-card>
+    <div class="signup-container">
+      <span>¿Todavía no tienes una cuenta?</span>
+      <button mat-stroked-button color="primary" [routerLink]="'/signup'">Crear nueva cuenta</button>
+    </div>
+  </div>

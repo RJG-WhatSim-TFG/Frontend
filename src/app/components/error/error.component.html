@@ -1,0 +1,7 @@
+<div id="outer" *ngIf="!useDialog && compVisible">
+    <div id="error" class="mat-elevation-z4" (click)="close()">
+        <h3>{{message}}</h3>
+        <span *ngIf="description!=null && description!=''">{{description}}</span>
+        <span *ngIf="description==null || description==''">{{message}}</span>
+    </div>
+</div>

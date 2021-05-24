@@ -1,0 +1,70 @@
+<whatsim-error *ngIf="hasError" type="dialog" error="{{errorShort}}"></whatsim-error>
+<div class="absolute-container">
+    <div class="container">
+        <div class="toolbar-container mat-elevation-z4">
+            <div class="picturecontainer">
+                <img class="profileimage" src="/assets/images/defaultprofilepic.png">
+            </div>
+            <div class="name-container">{{chat.profilename}}</div>
+            <div class="spacer"></div>
+            <button mat-icon-button [matMenuTriggerFor]="chatmenu" aria-label="Opciones">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            <mat-menu #chatmenu="matMenu">
+                <button mat-menu-item>Eliminar mensaje</button>
+                <button mat-menu-item>Editar mensaje</button>
+            </mat-menu>
+        </div>
+        <div class="messages-container">
+            <mat-spinner *ngIf="!loaded" class="center"></mat-spinner>
+            <whatsim-chat-message *ngFor="let message of chatMessages; let ind = index"
+            [message]="message" [arrow]="hasArrow(message, ind)"
+            [timemsg]="isTimeMessage(message)" [timedate]="message.time" [ngClass]="{center: isTimeMessage(message)}">
+            </whatsim-chat-message>
+        </div>
+        <!--
+        <div class="messages-container" *ngIf="(chat.messages==null || chat.messages.length<=0) && loaded"></div>
+        <div class="messages-container" *ngFor="let message of chat.messages; let ind = index">
+            <whatsim-chat-message *ngIf="(ind==0 || (ind>0 && (getDaysDifference(message.time)-getDaysDifference(chat.messages[ind-1].time)>=1)))"
+                class="center" [timemsg]="true" [timedate]="message.time">
+            </whatsim-chat-message>
+            <whatsim-chat-message [message]="message" [arrow]="(ind==0 || (ind>0 && chat.messages[ind-1].type!=message.type))">
+            </whatsim-chat-message>
+        </div>
+        -->
+        <div class="bottombar-container">
+            <div class="bottombar mat-elevation-z2">
+                <button mat-icon-button aria-label="Emojis" style="align-self: flex-end;">
+                    <mat-icon>emoji_emotions</mat-icon>
+                </button>
+                <div class="textinp">
+                    <!--<span class="textarea" role="textbox" contenteditable>a</span>-->
+                    <textarea style="font-size: large;" cdkTextareaAutosize placeholder="Escribe un mensaje"
+                    #autosize="cdkTextareaAutosize" cdkAutosizeMaxRows="6" [(ngModel)]="msgContent"></textarea>
+                </div>
+            </div>
+            <div class="spacer"></div>
+            <div style="margin: 15px 5px;">
+                <button mat-mini-fab aria-label="Enviar" color="primary" (click)="showNewModal()">
+                    <mat-icon>send</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<div class="container" style="background-color: brown;">
+    <div class="toolbar-container mat-elevation-z4" style="background-color: #1EBEA5;">
+        <div class="picturecontainer">
+            <img class="profileimage" src="/assets/images/defaultprofilepic.png">
+        </div>
+        <div>asd</div>
+        <div>asd</div>
+        <div>asd</div>
+    </div>
+    <div class="messages-container" style="background-color: beige;">
+        asd
+        asd
+    </div>
+</div>
+-->

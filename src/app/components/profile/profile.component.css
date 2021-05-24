@@ -1,0 +1,29 @@
+.content-flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.flex-left{
+    align-items:flex-start;
+    justify-content:left;
+}
+
+.content-flex > mat-card, div, span, p, button {
+    margin: 5px;
+  }
+
+.profile-card{
+    padding: 25px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 30%;
+    width: fit-content;
+}
+
+.profile-container{
+    margin-top: 20px;
+}

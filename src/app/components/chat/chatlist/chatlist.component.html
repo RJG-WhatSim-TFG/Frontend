@@ -1,0 +1,44 @@
+<whatsim-error *ngIf="hasError" type="dialog" error="{{errorShort}}"></whatsim-error>
+<div class="header-flex">
+    <h2 style="text-align: center; align-items: center;">Tus chats</h2>
+    <button mat-fab aria-label="Crear un nuevo chat" color="accent" (click)="showCreationModal()" style="width: auto; padding: 0 15px;border-radius: 50vw;">
+        <mat-icon>add</mat-icon> Nuevo chat
+    </button>
+</div>
+<div class="content-flex" style="margin-top: 2vh;">
+    <mat-divider></mat-divider>
+</div>
+<div *ngIf="chats" class="content-flex" style="margin-top: 2vh;">
+    <mat-accordion *ngFor="let chat of chats" style="margin: 1vh;">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{chat.title}}
+            </mat-panel-title>
+            <mat-panel-description>
+              Creación: {{formatCreationTime(chat)}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="content-flex">
+            <div class="row-flex"><b>Título:</b>{{chat.title}}</div>
+            <div class="row-flex"><b>Nombre del perfil:</b>{{chat.profilename}}</div>
+            <div class="row-flex" *ngIf="chat.profilepic"><b>Foto del perfil:</b>{{chat.profilepic}}</div>
+            <button routerLink="/chats/{{chat.id}}" mat-raised-button aria-label="Editar chat" color="primary" style="margin: auto; width: fit-content;">
+                <mat-icon>launch</mat-icon> Abrir en detalle
+            </button>
+          </div>
+          <mat-divider style="margin: 15px 0px;"></mat-divider>
+          <div class="header-flex">
+            <button mat-stroked-button aria-label="Editar chat" color="accent" (click)="showEditModal(chat)">
+                <mat-icon>edit</mat-icon> Editar
+            </button>
+            <button mat-stroked-button aria-label="Editar chat" color="warn" (click)="showDeleteConfirmation(chat)">
+                <mat-icon>delete</mat-icon> Eliminar
+            </button>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<div *ngIf="!chats" class="header-flex" style="margin-top: 2vh; justify-content: center;">
+    <h3 style="text-align: center; align-items: center;">No tienes ningún chat aún</h3>
+</div>
