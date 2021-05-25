@@ -73,7 +73,7 @@ export class ChatdetailComponent implements OnInit {
           }else{
             var previousMsg:Message = new Message(jsonMsgs[ind-1]);
             console.log(previousMsg);
-            if(this.getDaysDifference(new Date(previousMsg.time), new Date(m.time))>=1){
+            if(this.isDifferentDay(new Date(previousMsg.time), new Date(m.time))){
               var cmsg:TimeMessage = new TimeMessage({chatid: id, time: m.time});
               this.chatMessages.push(cmsg);
             }
@@ -102,8 +102,9 @@ export class ChatdetailComponent implements OnInit {
     );
   }
 
-  private getDaysDifference(date1: Date, date2: Date): Number{
-    return (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24);
+  private isDifferentDay(date1: Date, date2: Date): Boolean{
+    return !(date2.getDay()==date1.getDay() && date2.getMonth()==date1.getMonth() && date2.getFullYear()==date1.getFullYear());
+    //return (date2.getTime() - date1.getTime()) / (1000 * 3600 * 24);
   }
 
   private createInDb(data: any): void{

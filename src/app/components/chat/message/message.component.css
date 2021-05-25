@@ -88,6 +88,8 @@
     overflow: hidden;
     text-overflow:'-';
     /*display: table;*/
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 
   .message .timebubble .message-content .content {
